@@ -1,0 +1,11 @@
+,,accuracy,accuracy,precision,precision,recall,recall,f1,f1,pr_auc,pr_auc
+,,mean,std,mean,std,mean,std,mean,std,mean,std
+,model,,,,,,,,,,
+spatial,majority,0.895,0.042,0.0,0.0,0.0,0.0,0.0,0.0,0.105,0.042
+spatial,physics rule,0.95,0.015,0.739,0.08,0.764,0.043,0.75,0.058,0.791,0.093
+spatial,logistic regression,0.959,0.011,0.831,0.108,0.708,0.072,0.764,0.087,0.823,0.08
+spatial,lightgbm,0.993,0.005,0.975,0.018,0.96,0.025,0.967,0.013,0.994,0.004
+random,majority,0.888,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.112,0.0
+random,physics rule,0.947,0.003,0.762,0.014,0.772,0.013,0.767,0.012,0.816,0.021
+random,logistic regression,0.957,0.002,0.863,0.014,0.73,0.014,0.791,0.011,0.845,0.015
+random,lightgbm,0.995,0.0,0.981,0.006,0.972,0.006,0.977,0.002,0.994,0.004

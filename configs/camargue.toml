@@ -1,0 +1,43 @@
+# Study region: Camargue (Rhône delta, France). One rice crop per year, water-seeded in spring.
+name = "camargue"
+
+[aoi]
+# Full study area, WGS84 [lon_min, lat_min, lon_max, lat_max]. Covers nearly all French rice parcels.
+bbox = [4.30, 43.40, 4.90, 43.80]
+
+[feasibility]
+# Small test area for notebook 01: the UTM-aligned square of this size that contains the centre point.
+center = [4.52, 43.57]  # lon, lat
+size_m = 10000
+year = 2024  # a training year: the test year (2025) must not be looked at while designing the method
+
+[season]
+# Months to download (same every year). Flooding Apr-May, harvest Sep-Oct.
+start = "03-01"
+end = "11-30"
+
+[s1]
+orbit_direction = "DESCENDING"  # morning passes, usually calmer wind over water than evening passes
+# One track only (5-min UTC slot of the pass), so all dates share one viewing angle. The two descending tracks
+# (05:40, 05:50) differ by ~1 dB; both cover all 33 squares with 23 passes in 2024 (scripts/check_tracks.py), so it's a tie.
+track = "05:50"
+resolution = 20                 # m; S1 GRD IW true resolution is ~20 m (10 m is only the pixel spacing)
+back_coeff = "SIGMA0_ELLIPSOID" # flat delta, so no terrain correction is needed
+orthorectify = true
+edge_buffer_m = -20             # shrink parcels by one pixel before rasterising, to drop mixed edge pixels
+
+[features]
+# Season windows (month-day) for the physics features; adapt per region and calendar
+flood = ["04-15", "06-15"]
+peak = ["07-15", "09-30"]
+block_size_m = 5000  # spatial cross-validation blocks
+
+[labels]
+source = "rpg"
+rice_codes = ["RIZ"]
+
+# WFS layer per year. RPG.LATEST is the newest edition (2025 as of 2026-10); once a 2026 edition is published,
+# 2025 should get its own layer name ("RPG.2025:parcelles_graphiques"), so check this mapping before re-running.
+[labels.layers]
+2024 = "RPG.2024:parcelles_graphiques"
+2025 = "RPG.LATEST:parcelles_graphiques"

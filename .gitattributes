@@ -1,0 +1,12 @@
+# Store text files with LF line endings in the repo; Git converts them for the working copy as needed
+* text=auto
+
+# Binary files: never convert or diff them
+*.png binary
+*.jpg binary
+*.pdf binary
+*.npy binary
+*.gz binary
+*.joblib binary
+*.tif binary
+*.tiff binary

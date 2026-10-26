@@ -1,0 +1,5 @@
+,accuracy,accuracy,precision,precision,recall,recall,f1,f1,pr_auc,pr_auc
+,mean,std,mean,std,mean,std,mean,std,mean,std
+model,,,,,,,,,,
+logistic regression + series,0.987,0.007,0.945,0.018,0.931,0.016,0.938,0.013,0.983,0.007
+"lightgbm, 6 features only",0.963,0.011,0.843,0.114,0.742,0.081,0.788,0.094,0.864,0.079
